@@ -1,0 +1,12 @@
+name: Deploy
+on: [push]
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup Node
+      uses: actions/setup-node@v3
+    - run: npm install
+    - run: npm run build --prefix client
+    - run: npm test --prefix server
